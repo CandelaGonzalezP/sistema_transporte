@@ -1,4 +1,5 @@
 # ViajeSeguro - Sistema de Gestión de Reservas
+# Proyecto: Candela Gonzalez - ING INF -um
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python)
 ![Architecture](https://img.shields.io/badge/Arquitectura-Entity--Service-blue?style=flat)
@@ -115,5 +116,78 @@ El proyecto sigue estrictamente el patrón **Entity-Service** que separa:
 ✅ **Mantenibilidad**: Cambios en la lógica (ej. cómo se asigna un conductor) no afectan la estructura de datos (la `Reserva`).
 ✅ **Escalabilidad**: Fácil agregar nuevas reglas de negocio o nuevos servicios.
 
-### Diagrama de Patrones de Diseño
+## Tecnologías y Patrones
 
+### Tecnologías
+
+-   **Lenguaje**: Python 3.10+
+-   **Clases de Datos**: `dataclasses`
+-   **Interfaces**: `abc` (Abstract Base Classes)
+-   **Serialización**: `pickle`
+-   **Tipado**: `typing` (Type Hints)
+
+### Patrones de Diseño
+
+#### 1. Entity-Service Pattern
+Separación completa entre entidades (datos) y servicios (lógica).
+
+#### 2. Dependency Injection (DI)
+Todos los servicios reciben dependencias vía constructor (ver `main.py`). Este enfoque se prefiere sobre el patrón Singleton por ser más explícito, flexible y fácil de testear.
+
+#### 3. Factory Pattern
+`VehiculoFactory` encapsula la creación de `Auto` y `Camioneta`.
+
+#### 4. Observer Pattern
+`FlotaService` (Sujeto) notifica a `AdminService` (Observador) sobre cambios de disponibilidad del conductor.
+
+#### 5. Command Pattern
+`CrearReservaComando` encapsula una solicitud de reserva, permitiendo que `HistorialComandos` la ejecute y la deshaga.
+
+
+1---
+## Modelo de Dominio
+Cliente [1] -- [0..*] Reserva Reserva [1] -- [0..1] Conductor Conductor [1] -- [1] Vehiculo
+
+FlotaService [1] -- [0..] Conductor FlotaService [1] -- [0..] Vehiculo
+
+(Observer) FlotaService (Sujeto) [1] -- [0..*] Observador (AdminService)
+
+(Command) HistorialComandos (Invocador) [1] -- [0..*] Comando (CrearReservaComando) CrearReservaComando [1] -- [1] ReservaService CrearReservaComando [1] -- [1] FlotaService CrearReservaComando [1] -- [1] Reserva
+
+(Factory) VehiculoFactory -- (crea) --> Vehiculo Vehiculo <|-- Auto Vehiculo <|-- Camioneta
+
+
+---
+
+## Instalación y Guía de Uso
+
+### Requisitos Previos
+
+-   **Python**: 3.10 o superior
+
+### Instalación
+
+No se requieren paquetes externos (es código Python puro).
+
+1.  Clona o descarga el repositorio.
+2.  Crea la estructura de directorios y archivos como se describió.
+3.  Crea una carpeta `data` dentro del directorio `ViajeSeguro/` (el script de persistencia `persistencia_service.py` también la creará si no existe, gracias a la última corrección de ruta absoluta).
+
+### Ejecutar la Aplicación
+
+Desde la raíz del proyecto (`ViajeSeguro/`):
+
+```bash
+python main.py
+
+----
+
+Código,Excepción,Descripción
+ERROR 01, NoHayConductoresException, No hay conductores disponibles para asignar
+ERROR 02, ReservaInvalidaException, La reserva es inválida (ej. fecha pasada o estado incorrecto)
+ERROR 04, PersistenciaException, Error de E/S (escritura)
+ERROR 05, PersistenciaException, Archivo no encontrado o corrupto (lectura)
+
+---
+Licencia
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
