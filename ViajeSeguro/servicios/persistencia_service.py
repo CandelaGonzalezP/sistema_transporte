@@ -1,16 +1,17 @@
 import pickle
 import os
-from excepciones.excepciones_transporte import PersistenciaException
+from ViajeSeguro.excepciones.excepciones_transporte import PersistenciaException
 
 try:
     _script_dir = os.path.dirname(os.path.abspath(__file__))
 except NameError:
-    _script_dir = os.path.dirname(os.path.abspath("servicios/persistencia_service.py"))
+    _script_dir = os.path.dirname(os.path.abspath("ViajeSeguro/servicios/persistencia_service.py"))
 
-_project_root = os.path.dirname(_script_dir)
+_viajeseguro_root = os.path.dirname(_script_dir)
+
+_project_root = os.path.dirname(_viajeseguro_root)
 
 _BASE_DIR_ABS = os.path.join(_project_root, "data")
-
 
 
 class PersistenciaService:
@@ -24,7 +25,6 @@ class PersistenciaService:
     BASE_DIR = _BASE_DIR_ABS 
 
     def __init__(self):
-        
         os.makedirs(self.BASE_DIR, exist_ok=True)
 
     def _get_path(self, nombre_archivo: str) -> str:

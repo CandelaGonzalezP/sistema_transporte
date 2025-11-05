@@ -1,9 +1,9 @@
 import uuid
 from typing import Optional
-from entidades.conductor import Conductor
-from entidades.vehiculo import Vehiculo
-from observadores.observador_abc import Sujeto, Observador
-from excepciones.excepciones_transporte import NoHayConductoresException
+from ViajeSeguro.entidades.conductor import Conductor
+from ViajeSeguro.entidades.vehiculo import Vehiculo
+from ViajeSeguro.observadores.observador_abc import Sujeto, Observador
+from ViajeSeguro.excepciones.excepciones_transporte import NoHayConductoresException
 
 class FlotaService(Sujeto):
     """
@@ -19,7 +19,6 @@ class FlotaService(Sujeto):
     @property
     def conductores(self) -> list[Conductor]:
         return list(self._conductores.values())
-
     
     def agregar_vehiculo(self, vehiculo: Vehiculo):
         self._vehiculos.append(vehiculo)
@@ -48,7 +47,6 @@ class FlotaService(Sujeto):
             if conductor.disponible:
                 return conductor
         return None
-
 
     def registrar(self, observador: Observador):
         self._observadores.append(observador)

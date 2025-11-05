@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from entidades.vehiculo import Vehiculo
+from .vehiculo import Vehiculo 
 
 @dataclass
 class Conductor:

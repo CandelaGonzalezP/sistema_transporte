@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from entidades.conductor import Conductor
+from ViajeSeguro.entidades.conductor import Conductor
 from typing import Any
 
 class Observador(ABC):

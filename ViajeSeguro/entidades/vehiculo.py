@@ -2,15 +2,15 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 class Vehiculo(ABC):
-    @abstractmethod 
+    @abstractmethod
     def get_patente(self) -> str:
         pass
 
-    @abstractmethod  
+    @abstractmethod
     def get_capacidad(self) -> int:
         pass
 
-    @abstractmethod 
+    @abstractmethod
     def get_tipo(self) -> str:
         pass
 
@@ -19,7 +19,7 @@ class Auto(Vehiculo):
     patente: str
     marca: str
     modelo: str
-    capacidad: int = 4 
+    capacidad: int = 4  
 
     def get_patente(self) -> str:
         return self.patente
@@ -35,7 +35,7 @@ class Camioneta(Vehiculo):
     patente: str
     marca: str
     modelo: str
-    capacidad: int = 7 
+    capacidad: int = 7
 
     def get_patente(self) -> str:
         return self.patente

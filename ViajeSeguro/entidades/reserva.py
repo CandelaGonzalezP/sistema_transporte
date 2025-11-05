@@ -1,9 +1,9 @@
 import enum
 from dataclasses import dataclass, field
 from datetime import datetime
-from entidades.cliente import Cliente
-from entidades.conductor import Conductor
-from entidades.vehiculo import Vehiculo
+from .cliente import Cliente 
+from .conductor import Conductor 
+from .vehiculo import Vehiculo 
 from typing import Optional
 
 class EstadoReserva(enum.Enum):

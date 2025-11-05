@@ -1,8 +1,8 @@
-from observadores.observador_abc import Observador
-from servicios.flota_service import FlotaService
-from servicios.reserva_service import ReservaService
-from entidades.conductor import Conductor
-from excepciones.excepciones_transporte import NoHayConductoresException, ReservaInvalidaException
+from ViajeSeguro.observadores.observador_abc import Observador
+from .flota_service import FlotaService 
+from .reserva_service import ReservaService 
+from ViajeSeguro.entidades.conductor import Conductor
+from ViajeSeguro.excepciones.excepciones_transporte import NoHayConductoresException, ReservaInvalidaException
 from typing import Any
 
 class AdminService(Observador):
@@ -28,7 +28,7 @@ class AdminService(Observador):
             self._reserva_service.asignar_conductor(reserva_id, conductor)
             self._flota_service.actualizar_disponibilidad_conductor(conductor_id, False)
         except ReservaInvalidaException as e:
-            raise e 
+            raise e # Relanzamos
 
 
     def actualizar(self, sujeto: Any, conductor: Conductor):

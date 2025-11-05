@@ -1,14 +1,14 @@
 import os
 from datetime import datetime, timedelta
-from entidades.cliente import Cliente
-from excepciones.excepciones_transporte import ViajeSeguroException, PersistenciaException
-from servicios.vehiculo_factory import VehiculoFactory
-from servicios.flota_service import FlotaService
-from servicios.reserva_service import ReservaService
-from servicios.admin_service import AdminService
-from servicios.persistencia_service import PersistenciaService
-from comandos.historial_comandos import HistorialComandos
-from comandos.crear_reserva_cmd import CrearReservaComando
+from ViajeSeguro.entidades.cliente import Cliente
+from ViajeSeguro.excepciones.excepciones_transporte import ViajeSeguroException, PersistenciaException
+from ViajeSeguro.servicios.vehiculo_factory import VehiculoFactory
+from ViajeSeguro.servicios.flota_service import FlotaService
+from ViajeSeguro.servicios.reserva_service import ReservaService
+from ViajeSeguro.servicios.admin_service import AdminService
+from ViajeSeguro.servicios.persistencia_service import PersistenciaService
+from ViajeSeguro.comandos.historial_comandos import HistorialComandos
+from ViajeSeguro.comandos.crear_reserva_cmd import CrearReservaComando
 
 def main():
     """
@@ -17,7 +17,7 @@ def main():
     """
     try:
         print("==============================================")
-        print("   Sistema de Transporte 'ViajeSeguro'   ")
+        print("   Sistema de Transporte 'ViajeSeguro' (Python)")
         print(" Patrones: Entity-Service, Factory, Observer, Command")
         print("==============================================\n")
 
@@ -25,6 +25,7 @@ def main():
         # 1. INICIALIZAR SERVICIOS (Inyección de Dependencias)
         # ============================================
 
+        # Servicios base y Patrones
         vehiculo_factory = VehiculoFactory()       # <-- PATRÓN FACTORY
         flota_service = FlotaService()             # <-- PATRÓN OBSERVER (Sujeto)
         reserva_service = ReservaService()

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from excepciones.excepciones_transporte import ViajeSeguroException
+from ..excepciones.excepciones_transporte import ViajeSeguroException 
 
 class Comando(ABC):
     @abstractmethod

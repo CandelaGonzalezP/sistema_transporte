@@ -1,5 +1,6 @@
-from comandos.comando_abc import Comando
-from excepciones.excepciones_transporte import ViajeSeguroException
+from .comando_abc import Comando 
+from ViajeSeguro.excepciones.excepciones_transporte import ViajeSeguroException
+
 
 class HistorialComandos:
     """Invocador del patrón Command. Mantiene una pila de comandos."""
@@ -25,6 +26,4 @@ class HistorialComandos:
             ultimo_comando = self._historial.pop()
             ultimo_comando.deshacer()
         except ViajeSeguroException as e:
-    
             print(f"Error al deshacer: {e.get_full_message()}")
-         

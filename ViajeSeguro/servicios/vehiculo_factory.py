@@ -1,4 +1,4 @@
-from entidades.vehiculo import Vehiculo, Auto, Camioneta
+from ViajeSeguro.entidades.vehiculo import Vehiculo, Auto, Camioneta
 
 class VehiculoFactory:
     """Patrón Factory: Centraliza la creación de vehículos."""

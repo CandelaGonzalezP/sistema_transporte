@@ -22,9 +22,9 @@ class PersistenciaException(ViajeSeguroException):
     """Lanzada durante errores de E/S (lectura/escritura)."""
     def __init__(self, message, tipo_operacion, cause=None):
         if tipo_operacion == "LECTURA":
-            code = "ERROR 05" 
+            code = "ERROR 05"
         else:
-            code = "ERROR 04"
+            code = "ERROR 04" 
             
         super().__init__(message, code, f"Error de {tipo_operacion}: {message}")
         self.tipo_operacion = tipo_operacion

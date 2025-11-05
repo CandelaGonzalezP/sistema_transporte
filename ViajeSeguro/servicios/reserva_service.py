@@ -1,9 +1,9 @@
 import uuid
 from datetime import datetime
-from entidades.reserva import Reserva, EstadoReserva
-from entidades.cliente import Cliente
-from entidades.conductor import Conductor
-from excepciones.excepciones_transporte import ReservaInvalidaException
+from ViajeSeguro.entidades.reserva import Reserva, EstadoReserva
+from ViajeSeguro.entidades.cliente import Cliente
+from ViajeSeguro.entidades.conductor import Conductor
+from ViajeSeguro.excepciones.excepciones_transporte import ReservaInvalidaException
 
 class ReservaService:
     """Servicio que maneja la lógica de negocio de las reservas."""
